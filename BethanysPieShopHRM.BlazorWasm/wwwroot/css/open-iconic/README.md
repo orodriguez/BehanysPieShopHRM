@@ -1,6 +1,10 @@
 [Open Iconic v1.1.1](https://github.com/iconic/open-iconic)
 ===========
 
+## Run SQL Server on mac
+
+docker run -d --name LocalSqlServer -e ACCEPT_EULA=Y -e SA_PASSWORD=Strong123 -p 1433:1433 mcr.microsoft.com/azure-sql-edge
+
 ### Open Iconic is the open source sibling of [Iconic](https://github.com/iconic/open-iconic). It is a hyper-legible collection of 223 icons with a tiny footprint&mdash;ready to use with Bootstrap and Foundation. [View the collection](https://github.com/iconic/open-iconic)
 
 

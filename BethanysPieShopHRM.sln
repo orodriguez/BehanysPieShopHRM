@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BethanysPieShopHRM.BlazorWa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BethanysPieShopHRM.Shared", "BethanysPieShopHRM.Shared\BethanysPieShopHRM.Shared.csproj", "{9FDB2B87-DCA6-4FC2-89F7-821AB21BC7AD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BethanysPieShopHRM.Api", "BethanysPieShopHRM.Api\BethanysPieShopHRM.Api.csproj", "{4C356121-007D-4D50-A690-8A796628789D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{9FDB2B87-DCA6-4FC2-89F7-821AB21BC7AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9FDB2B87-DCA6-4FC2-89F7-821AB21BC7AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9FDB2B87-DCA6-4FC2-89F7-821AB21BC7AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4C356121-007D-4D50-A690-8A796628789D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C356121-007D-4D50-A690-8A796628789D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4C356121-007D-4D50-A690-8A796628789D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4C356121-007D-4D50-A690-8A796628789D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
