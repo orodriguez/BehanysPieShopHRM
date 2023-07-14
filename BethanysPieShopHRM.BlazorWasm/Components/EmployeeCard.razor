@@ -14,13 +14,12 @@
                     @onclick="@(async () => await EmployeeQuickViewClicked.InvokeAsync(Employee))">
                 Quick view
             </button>
-            @* <a href="@($"employeedetails/{Employee.EmployeeId}")" class="btn btn-outline-primary"> *@
-            @*     Full details *@
-            @* </a> *@
-
             <button @onclick="(() => NavigateToDetails(Employee))" class="btn btn-outline-primary">
                 Full details
             </button>
+            <a href="@($"employeeedit/{Employee.EmployeeId}")" class="btn btn-outline-primary">
+                Edit Employee
+            </a>
         </div>
     </div>
 </div>
