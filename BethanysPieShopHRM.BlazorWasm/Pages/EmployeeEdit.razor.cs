@@ -1,3 +1,4 @@
+using System.Runtime.InteropServices;
 using BethanysPieShopHRM.BlazorWasm.Services;
 using BethanysPieShopHRM.Shared.Domain;
 using Microsoft.AspNetCore.Components;
@@ -15,6 +16,9 @@ public partial class EmployeeEdit
     [Inject]
     public IJobCategoryDataService? JobCategoryDataService { get; set; }
     
+    [Inject] 
+    public NavigationManager? NavigationManager { get; set; }
+    
     [Parameter]
     public string? EmployeeId { get; set; }
     
@@ -23,9 +27,15 @@ public partial class EmployeeEdit
     private List<Country> Countries { get; set; } = new List<Country>();
 
     public List<JobCategory> JobCategories { get; set; } = new List<JobCategory>();
-    
+
+    public string Message { get; set; } = string.Empty;
+    public string StatusClass { get; set; } = string.Empty;
+    public bool Saved { get; set; } = false;
+
     protected override async Task OnInitializedAsync()
     {
+        Saved = false;
+        
         Countries = (await CountryDataService!.GetAllCountries()).ToList();
 
         JobCategories = (await JobCategoryDataService!.GetAllJobCategories()).ToList();
@@ -47,5 +57,52 @@ public partial class EmployeeEdit
             Employee = await EmployeeDataService!
                 .GetEmployeeDetails(employeeId);
         }
+    }
+
+    private async Task HandleValidSubmit()
+    {
+        Saved = false;
+        
+        if (Employee.EmployeeId == 0)
+        {
+            var addedEmployee = await EmployeeDataService!.AddEmployee(Employee);
+
+            if (addedEmployee == null)
+            {
+                Saved = false;
+                StatusClass = "alert-danger";
+                Message = "New employee added successfully";
+            }
+            
+            Saved = true;
+            StatusClass = "alert-success";
+            Message = "New employee added successfully";
+            return;
+        }
+
+        await EmployeeDataService!.UpdateEmployee(Employee);
+        StatusClass = "alert-success";
+        Message = "Employee updated successfully";
+        Saved = true;
+    }
+
+    private void HandleInvalidSubmit()
+    {
+        StatusClass = "alert-danger";
+        Message = "There are some validation errors. Please try again.";
+    }
+
+    private async Task DeleteEmployee()
+    {
+        await EmployeeDataService!.DeleteEmployee(Employee.EmployeeId);
+
+        StatusClass = "alert-success";
+        Message = "Delete successfully";
+        Saved = true;
+    }
+
+    private void NavigateToOverview()
+    {
+        NavigationManager!.NavigateTo("/employeeoverview");
     }
 }
