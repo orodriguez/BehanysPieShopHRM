@@ -54,7 +54,7 @@ namespace BethanysPieShopHRM.Api.Controllers
             fileStream.Write(employee.ImageContent, 0, employee.ImageContent.Length);
             fileStream.Close();
 
-            employee.ImageName = $"https://{currentUrl}/uploads/{employee.ImageName}";
+            employee.ImageName = $"https://{currentUrl}/Uploads/{employee.ImageName}";
 
             var createdEmployee = _employeeRepository.AddEmployee(employee);
 
